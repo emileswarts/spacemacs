@@ -56,9 +56,6 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(monokai
-                         spacemacs-dark
-                         spacemacs-light
-                         solarized-light
                          solarized-dark
                          leuven
                          zenburn)
@@ -139,9 +136,6 @@ values."
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-   ;; The default package repository used if no explicit repository has been
-   ;; specified with an installed package.
-   ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil
    ))
 
