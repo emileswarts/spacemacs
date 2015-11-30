@@ -81,7 +81,7 @@ values."
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
    ;; (default 'cache)
-   dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-auto-save-file-location 'nil
    dotspacemacs-use-ido nil
    ;; If non nil, `helm' will try to miminimize the space it uses. (default nil)
    dotspacemacs-helm-resize nil
