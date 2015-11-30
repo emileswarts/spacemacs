@@ -23,6 +23,8 @@ values."
      better-defaults
      emacs-lisp
      git
+     gtags
+     javascript
      html
      ruby
      ruby-on-rails
@@ -33,6 +35,7 @@ values."
      ;; spell-checking
      ;; syntax-checking
      version-control
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -47,15 +50,11 @@ values."
    dotspacemacs-delete-orphan-packages nil))
 
 (defun dotspacemacs/init ()
-  ;; spacemacs settings.
   (setq-default
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '(recents projects)
-   ;; List of themes, the first of the list is loaded when spacemacs starts.
-   ;; Press <SPC> T n to cycle to the next theme in the list (works great
-   ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(monokai
                          solarized-dark
                          leuven
@@ -136,21 +135,18 @@ values."
    ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
+   smooth-scroll-lines-from-window-bottom 0
+   smooth-scroll-lines-from-window-top 0
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
    ))
 
-(defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put any
-user code."
-  )
+(defun dotspacemacs/user-init ())
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 )
-
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
