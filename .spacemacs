@@ -4,7 +4,9 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     auto-completion
+     (auto-completion
+         :variables
+         auto-completion-tab-key-behavior 'cycle)
      better-defaults
      emacs-lisp
      git
@@ -15,8 +17,9 @@
      ruby
      ruby-on-rails
      (shell :variables shell-default-shell 'eshell)
-     ;; spell-checking
-     ;; syntax-checking
+     spell-checking
+     syntax-checking
+     semantic
      version-control
      yaml
      )
@@ -99,7 +102,11 @@
    dotspacemacs-default-package-repository nil
    ))
 
-(defun dotspacemacs/user-init ())
+(defun dotspacemacs/user-init ()
+  (setq-default
+   evil-shift-round nil
+   )
+)
 
 (defun dotspacemacs/user-config ()
 )
