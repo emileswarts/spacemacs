@@ -9,6 +9,7 @@
          auto-completion-tab-key-behavior 'cycle)
      better-defaults
      emacs-lisp
+     eyebrowse
      git
      gtags
      javascript
@@ -33,6 +34,7 @@
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists '(recents projects)
+   dotspacemacs-startup-recent-list-size 5
    dotspacemacs-themes '(monokai
                          solarized-dark
                          leuven
@@ -57,27 +59,15 @@
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
    dotspacemacs-enable-paste-micro-state nil
-   ;; Which-key delay in seconds. The which-key buffer is the popup listing
-   ;; the commands bound to the current keystroke sequence. (default 0.4)
    dotspacemacs-which-key-delay 0.4
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
    ;; (default 'bottom)
    dotspacemacs-which-key-position 'bottom
-   ;; If non nil a progress bar is displayed when spacemacs is loading. This
-   ;; may increase the boot time on some systems and emacs builds, set it to
-   ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
-   ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
-   ;; (Emacs 24.4+ only)
+   dotspacemacs-loading-progress-bar nil
    dotspacemacs-fullscreen-at-startup nil
-   ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
-   ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
-   ;; If non nil the frame is maximized when Emacs starts up.
-   ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
-   ;; (default nil) (Emacs 24.4+ only)
    dotspacemacs-maximized-at-startup t
    evil-escape-key-sequence (kbd "tn")
    ;; A value from the range (0..100), in increasing opacity, which describes
@@ -93,9 +83,6 @@
    dotspacemacs-line-numbers t
    smooth-scroll-margin 0
    dotspacemacs-smartparens-strict-mode nil
-   ;; Select a scope to highlight delimiters. Possible values are `any',
-   ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
-   ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
@@ -105,6 +92,10 @@
 (defun dotspacemacs/user-init ()
   (setq-default
    evil-shift-round nil
+   indent-tabs-mode nil
+   require-final-newline t
+   ring-bell-function 'ignore
+   vc-follow-symlinks t
    )
 )
 
