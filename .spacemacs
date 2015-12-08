@@ -41,7 +41,7 @@
                          zenburn)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 17
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -59,7 +59,7 @@
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
    dotspacemacs-enable-paste-micro-state nil
-   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-delay 1
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
@@ -79,9 +79,12 @@
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
    dotspacemacs-mode-line-unicode-symbols t
-   dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
+   smooth-scroll-margin nil
+   smooth-scroll-strict-margins t
+   smooth-scroll-lines-from-window-top 0
+   smooth-scroll-lines-from-window-bottom 0
    dotspacemacs-line-numbers t
-   smooth-scroll-margin 0
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
@@ -96,10 +99,25 @@
    require-final-newline t
    ring-bell-function 'ignore
    vc-follow-symlinks t
-   )
+   global-linum-mode t
+   theming-modifications)
 )
 
 (defun dotspacemacs/user-config ()
-)
+  (evil-leader/set-key
+    "gp" 'magit-push-current-to-upstream
+    "gB" 'magit-blame-quit
+    "gr" 'magit-rebase-interactive
+    )
+
+  (let ((comint-hooks '(eshell-mode-hook
+                        term-mode-hook
+                        erc-mode-hook
+                        messages-buffer-mode-hook
+                        comint-mode-hook)))
+    (spacemacs/add-to-hooks (defun bb/no-hl-line-mode ()
+                              (setq-local global-hl-line-mode nil))
+                            comint-hooks))
+   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
