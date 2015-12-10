@@ -105,9 +105,15 @@
 
 (defun dotspacemacs/user-config ()
   (evil-leader/set-key
-    "gp" 'magit-push-current-to-upstream
+    "gp" '(lambda ()
+            (interactive)
+            (shell-command "git push"))
+    "gP" '(lambda ()
+            (interactive)
+            (shell-command "git pull"))
     "gB" 'magit-blame-quit
     "gr" 'magit-rebase-interactive
+    "go" 'magit-rebase-interactive
     )
 
   (let ((comint-hooks '(eshell-mode-hook
